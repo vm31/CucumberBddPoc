@@ -1,44 +1,23 @@
-pipeline{
-
+pipeline {
     agent any
-
-    stages {
-
-        stage ('Compile Stage') {
-
-            steps {
-
-                withMaven(maven: 'maven_3_5_0') {
-                    sh 'mvn clean install'
-
-                }
-
-            }
-        }
-    stage ('Test Stage') {
-
-            steps {
-
-                withMaven(maven: 'maven_3_5_0') {
-                    sh 'mvn test'
-
-                }
-
-            }
-        }
-
-
-        stage ('Cucumber Reports') {
-
-            steps {
-                cucumber buildStatus: "UNSTABLE",
-                    fileIncludePattern: "**/cucumber.json",
-                    jsonReportDirectory: 'target'
-
-            }
-
-        }
-
+    tools {
+        maven 'Maven 3.6.3'
+        jdk 'jdk1.8.0_251'
     }
+    stages {
+        stage ('Initialize') {
+            steps {
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+        }
 
+        stage ('Build') {
+            steps {
+                echo 'This is a minimal pipeline.'
+            }
+        }
+    }
 }
