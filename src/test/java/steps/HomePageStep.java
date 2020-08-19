@@ -12,6 +12,7 @@ public class HomePageStep extends BaseTest {
     @Given("I am on home page")
     public void i_am_on_home_page() {
         driver.get("https://www.justyouroutfit.com");
+        System.out.println(driver.getCurrentUrl());
 
     }
 

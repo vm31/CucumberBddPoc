@@ -10,10 +10,10 @@ formatter.scenario({
   "keyword": "Scenario",
   "tags": [
     {
-      "name": "@Regression"
+      "name": "@regression"
     },
     {
-      "name": "@Smoke"
+      "name": "@smoke"
     }
   ]
 });
@@ -49,7 +49,7 @@ formatter.scenario({
   "keyword": "Scenario",
   "tags": [
     {
-      "name": "@Smoke"
+      "name": "@regression"
     }
   ]
 });
@@ -91,10 +91,10 @@ formatter.scenario({
   "keyword": "Scenario",
   "tags": [
     {
-      "name": "@Regression"
+      "name": "@regression"
     },
     {
-      "name": "@Smoke"
+      "name": "@smoke"
     }
   ]
 });
@@ -130,7 +130,7 @@ formatter.scenario({
   "keyword": "Scenario",
   "tags": [
     {
-      "name": "@Smoke"
+      "name": "@regression"
     }
   ]
 });
