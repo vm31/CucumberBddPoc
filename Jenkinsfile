@@ -1,12 +1,44 @@
-pipeline {
+pipeline{
+
     agent any
+
     stages {
-stage('testing pipeline'){
-          steps{
-      echo 'test1'
-                sh 'mvn test -Dcucumber.options="--tag @smoke"'
+
+        stage ('Compile Stage') {
+
+            steps {
+
+                withMaven(maven: 'maven_3_5_0') {
+                    sh 'mvn clean install'
 
                 }
+
+            }
         }
-}
+    stage ('Test Stage') {
+
+            steps {
+
+                withMaven(maven: 'maven_3_5_0') {
+                    sh 'mvn test'
+
+                }
+
+            }
+        }
+
+
+        stage ('Cucumber Reports') {
+
+            steps {
+                cucumber buildStatus: "UNSTABLE",
+                    fileIncludePattern: "**/cucumber.json",
+                    jsonReportDirectory: 'target'
+
+            }
+
+        }
+
+    }
+
 }
