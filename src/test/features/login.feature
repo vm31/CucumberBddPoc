@@ -1,4 +1,5 @@
 Feature: validate login functionality
+  @smoke
   Scenario:TC_01_validate negative login functionality
     Given I am on home page
     And I click on login icon
