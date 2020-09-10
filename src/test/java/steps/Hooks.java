@@ -11,10 +11,12 @@ public class Hooks extends BaseTest {
     @Before
     public void openBrowser(){
 
+
         System.setProperty("webdriver.chrome.driver","libraries//chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
 
     }
     @After

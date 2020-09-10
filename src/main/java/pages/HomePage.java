@@ -5,11 +5,11 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class HomePage {
+
     public WebDriver driver;
 
     public HomePage(WebDriver driver) {
         this.driver = driver;}
-
 
 
     @FindBy(xpath = "//a[@class='headerLogo']")

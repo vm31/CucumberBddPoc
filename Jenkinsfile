@@ -7,14 +7,14 @@ pipeline {
             steps{
                 withMaven(maven:'MAVEN_HOME'){
                     echo 'compile stage'
-                    sh 'mvn clean compile'
+                    sh 'clean compile'
                 }
             }
         }
         stage ('Testing Stage'){
             steps{
                 withMaven(maven:'MAVEN_HOME'){
-                    sh 'mvn test -Dcucumber.filter.tags="@smoke'
+                    sh 'test -Dcucumber.filter.tags="@smoke'
                 }
             }
         }
