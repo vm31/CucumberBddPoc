@@ -6,6 +6,7 @@ import cucumber.api.java.en.*;
 import java.io.IOException;
 
 public class LoginStep extends BaseTest {
+
     @Given("I click on login icon")
     public void i_click_on_login_icon() {
         loginPageObj.clickOnLoginIcon();
@@ -14,7 +15,9 @@ public class LoginStep extends BaseTest {
 
     @When("I enter email id is {string} and password is {string}")
     public void i_enter_email_id_is_and_password_is(String email_id, String password) throws IOException {
-        loginPageObj.enterEmailId(util.readPropertyFile(email_id));
+
+        //loginPageObj.enterEmailId(util.readPropertyFile(email_id));
+        loginPageObj.enterEmailId(util.updatePropertyValue(email_id));
         loginPageObj.enterPassword(util.readPropertyFile(password));
 
     }
