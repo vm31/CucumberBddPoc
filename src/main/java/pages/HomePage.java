@@ -9,7 +9,8 @@ public class HomePage {
     public WebDriver driver;
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;}
+        this.driver = driver;
+    }
 
 
     @FindBy(xpath = "//a[@class='headerLogo']")
@@ -17,6 +18,7 @@ public class HomePage {
 
     public boolean verifyHomePageLogo(){
         return homepageLogo.isDisplayed();
+
 
     }
 

@@ -4,10 +4,17 @@ package helper;
 
 
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.io.*;
 import java.util.Properties;
 
 public class Utility {
+    public WebDriver driver;
    static Properties prop = new Properties();
     //method for reading property file
     public String readPropertyFile(String propertyName) throws IOException {
@@ -43,6 +50,16 @@ public class Utility {
         } catch (Exception e) {
             e.printStackTrace();
         }return pName;
+
+
+    }
+    public String waitForElement(String locator){
+        long timeOut = 20;
+        WebDriverWait wait = new WebDriverWait(driver, timeOut);
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
+        element.click();
+        wait.until(ExpectedConditions.invisibilityOf(element));
+        return locator;
 
 
     }
