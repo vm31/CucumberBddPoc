@@ -1,28 +1,10 @@
-pipeline {
-         agent any
-         stages {
-                 stage('One') {
-                 steps {
-                     echo 'Hi, this is Regression Pipeline'
-                 }
-                 }
-                 stage('Two') {
-                 steps {
+node{
+   stage('SCM Checkout'){
 
-                    mvn "clean install"
-
-                 }
-                 }
-                 stage('Three') {
-                 when {
-                       not {
-                            branch "master"
-                       }
-                 }
-                 steps {
-                       echo "Hello"
-                 }
-                 }
-
-              }
+      git 'https://github.com/vm31/CucumberBddPoc'
+   }
+   stage('Compile-Package'){
+      def mvnHome = tool name: 'maven_3_5_0', type: 'maven'
+      sh "${mvnHome}/bin/mvn package"
+   }
 }
