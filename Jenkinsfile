@@ -3,12 +3,14 @@ pipeline {
          stages {
                  stage('One') {
                  steps {
-                     echo 'Hi, this is Zulaikha from edureka'
+                     echo 'Hi, this is Regression Pipeline'
                  }
                  }
                  stage('Two') {
                  steps {
-                    input('Do you want to proceed?')
+                    Root POM "pom.xml"
+                    Goals and options "test -Dcucumber.options="--tags @regression""
+
                  }
                  }
                  stage('Three') {
