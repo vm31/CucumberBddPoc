@@ -8,8 +8,8 @@ pipeline {
                  }
                  stage('Two') {
                  steps {
-                    Root POM "pom.xml"
-                    Goals and options "test -Dcucumber.options="--tags @regression""
+
+                    mvn "clean install"
 
                  }
                  }
