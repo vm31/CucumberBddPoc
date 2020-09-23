@@ -4,10 +4,8 @@ node{
    }
    stage('Compile Stage'){
       def mvnHome = tool name: 'maven_3_5_0', type: 'maven'
-      bat "${mvnHome}/bin/mvn clean install"
+      bat "${mvnHome}/bin/mvn test -Dcucumber.options='--tags @regression'"
    }
-   Stage('Test Stage'){
-      bat "${mvnHome}/bin/ mvn test -Dcucumber.options='--tags @regression'"
-   }
+
 
 }
