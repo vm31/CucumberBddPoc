@@ -7,7 +7,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
         glue = "steps",
         dryRun = false,
         monochrome = true,
-        plugin = {"pretty","html:test-output"})
+        plugin = {"pretty", "html:target/cucumber", "json:target/cucumber.json"})
 public class TestRunner extends AbstractTestNGCucumberTests {
 
 }
