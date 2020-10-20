@@ -5,6 +5,7 @@ package helper;
 
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,6 +17,10 @@ import java.util.Properties;
 public class Utility {
     public WebDriver driver;
    static Properties prop = new Properties();
+
+    public Utility(WebDriver driver) {
+    }
+
     //method for reading property file
     public String readPropertyFile(String propertyName) throws IOException {
         String propertyValue = null;
@@ -53,16 +58,13 @@ public class Utility {
 
 
     }
-    public String waitForElement(String locator){
-        long timeOut = 20;
-        WebDriverWait wait = new WebDriverWait(driver, timeOut);
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(locator)));
-        element.click();
-        wait.until(ExpectedConditions.invisibilityOf(element));
+    public WebElement waitUntilElementVisible(WebElement locator){
+        WebDriverWait wait = new WebDriverWait(driver,30);
+        wait.until(ExpectedConditions.visibilityOf(locator));
         return locator;
-
-
     }
+
+
 
 
 }
