@@ -1,22 +1,21 @@
 package helper;
 
 
-
-
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.*;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 public class Utility {
     public WebDriver driver;
-   static Properties prop = new Properties();
+    static Properties prop = new Properties();
+    public static Logger logger;
+    public final int timeOut = 45;
 
     public Utility(WebDriver driver) {
     }
@@ -58,11 +57,20 @@ public class Utility {
 
 
     }
-    public WebElement waitUntilElementVisible(WebElement locator){
-        WebDriverWait wait = new WebDriverWait(driver,30);
-        wait.until(ExpectedConditions.visibilityOf(locator));
-        return locator;
+    public void waitForVisibility(By targetElement) {
+        try{
+            WebDriverWait wait = new WebDriverWait(driver, timeOut);
+            wait.until(ExpectedConditions.visibilityOfElementLocated(targetElement));
+        }
+        catch(TimeoutException e ){
+            System.out.println("Element is not visible: " + targetElement );
+            System.out.println();
+            System.out.println(e.getMessage());
+            throw new TimeoutException();
+
+        }
     }
+
 
 
 

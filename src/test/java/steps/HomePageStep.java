@@ -8,14 +8,15 @@ import cucumber.api.java.en.When;
 import org.openqa.selenium.JavascriptExecutor;
 import org.testng.Assert;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 public class HomePageStep extends BaseTest {
 
 
-    @Given("I am on home page")
-    public void i_am_on_home_page() {
-        driver.get("https://www.justyouroutfit.com");
+    @Given("I am on home page:{string}")
+    public void i_am_on_home_page(String url) throws IOException {
+        driver.get(util.readPropertyFile(url));
         System.out.println(driver.getCurrentUrl());
 
 
@@ -40,8 +41,7 @@ public class HomePageStep extends BaseTest {
 
     @When("I select menu item {string}")
     public void iClickOn(String pname) {
-        //homePageObj.getOptions();
-        //homePageObj.clickOnOption(pname);
+
         homePageObj.getMenuItem(pname);
     }
 
@@ -49,4 +49,6 @@ public class HomePageStep extends BaseTest {
     public void iVerifyCurrentUrl(String arg0) {
         Assert.assertEquals(arg0, driver.getCurrentUrl());
     }
+
+
 }

@@ -7,9 +7,8 @@ Feature: Home page
 
   @regression
   Scenario: TC_02_Select item from menu item
-    Given I am on home page
+    Given I am on home page:"URL"
     And I verify login icon is displayed
-    #And I get all the menu items on homepage
     When I select menu item "Women"
-    Then I verify current url:"https://www.justyouroutfit.com/womens/"
+    Then I verify current url:"https://www.justyouroutfit.com/"
     
